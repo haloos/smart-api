@@ -1,13 +1,21 @@
 const express = require('express'); 
 
-const app = express(); 
+const app = express();  
+
+const database = {
+  users: [
+    {
+      
+    }
+  ]
+}
 
 app.get('/', (req, res)=> {
  res.send('this is working'); 
 })
 
 app.post('/signin', (req, res) => {
-  res.send('signing')
+  res.json('signing')
 })
 
 app.listen(3000, ()=> {
