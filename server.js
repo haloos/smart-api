@@ -43,12 +43,23 @@ app.post('/register', (req,res) => {
   database.users.push({
     id: '125', 
     name: 'name', 
-    email: 'email', 
+    email: 'email',  
     password: 'password', 
     entries: 0, 
     joined: new Date()
   }) 
   res.json(database.users[database.users.length-1])
+})  
+
+app.get('/profile/:id', (req,res) => {
+  const { id } = req.params;  
+  database.users.forEach(user => {
+    if (user.id === id) {
+      res.json(user); 
+    } else {
+      res.status(404).json('no such user'); 
+    }
+  }) 
 })
 
 app.listen(3000, ()=> {
