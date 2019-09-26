@@ -1,5 +1,6 @@
 const express = require('express'); 
 const bodyParser = require('body-parser'); 
+const bcrypt = require('bcrypt')
 
 const app = express();  
 
@@ -26,7 +27,7 @@ const database = {
 }
 
 app.get('/', (req, res)=> {
- res.send('this is working'); 
+ res.send(database.users); 
 })
 
 app.post('/signin', (req, res) => {
