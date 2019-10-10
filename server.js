@@ -1,7 +1,16 @@
 const express = require('express'); 
 const bodyParser = require('body-parser'); 
 const bcrypt = require('bcrypt-nodejs'); 
-const cors = require('cors');
+const cors = require('cors'); 
+const knex = require('knex')({
+  client: 'mysql',
+  connection: {
+    host : '127.0.0.1',
+    user : 'your_database_user',
+    password : 'your_database_password',
+    database : 'myapp_test'
+  }
+});
 
 const app = express();  
 
