@@ -14,14 +14,13 @@ const knex = require('knex')
   }
 }); 
 
-db.select('*').from('users').then(data => {
-  console.log(data); 
-});
 
 const app = express();  
 
 app.use(bodyParser.json()); 
-app.use(cors())
+
+app.use(cors()) 
+
 const database = {
   users: [
     {
@@ -58,14 +57,11 @@ app.post('/signin', (req, res) => {
 
 app.post('/register', (req,res) => { 
   const { email, name, password } = req.body; 
-  database.users.push({
-    id: '125', 
-    name: 'name', 
-    email: 'email',  
-    password: 'password', 
-    entries: 0, 
+  db('users').insert({
+    email: email, 
+    name: name, 
     joined: new Date()
-  }) 
+  }).then(console.log)
   res.json(database.users[database.users.length-1])
 })  
 
