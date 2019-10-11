@@ -12,7 +12,9 @@ const knex = require('knex')
     password : '',
     database : 'smart-brain'
   }
-});
+}); 
+
+knex.select('*').from('users');
 
 const app = express();  
 
