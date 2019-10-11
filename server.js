@@ -14,7 +14,9 @@ const knex = require('knex')
   }
 }); 
 
-postgres.select('*').from('users');
+postgres.select('*').from('users').then(data => {
+  console.log(data); 
+});
 
 const app = express();  
 
