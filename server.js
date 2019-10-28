@@ -72,7 +72,10 @@ app.post('/register', (req,res) => {
 
 app.get('/profile/:id', (req,res) => {
   const { id } = req.params;  
-  
+  let found = false;
+  db.select('*').from('users')/then(user => {
+    console.log(user); 
+  })
 })
 
 app.listen(3000, ()=> {
