@@ -73,9 +73,11 @@ app.post('/register', (req,res) => {
 app.get('/profile/:id', (req,res) => {
   const { id } = req.params;  
   db.select('*').from('users').where({id})
-    .then(user => {
+    .then(user => { 
+    console.log(user);
     res.json(user[0])
-  })
+  }) 
+  .catch(err => res.status(400).json('Not found'))
 })
 
 app.listen(3000, ()=> {
