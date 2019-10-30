@@ -85,7 +85,12 @@ app.get('/profile/:id', (req,res) => {
 })
 
 app.put('image', (req, res) => {
-  const { id } = req.body;
+  const { id } = req.body; 
+   where('published_date', '<', 2000)
+  .update({
+    status: 'archived',
+    thisKeyIsSkipped: undefined
+})
 })
 
 /* 
