@@ -88,7 +88,10 @@ app.put('image', (req, res) => {
   const { id } = req.body; 
    db.where('id', '=', id)
   .increment('entries', 1) 
-  .returning('entries')
+  .returning('entries') 
+  .then(entries => {
+    console.log(entries);
+  })
 })
 
 /* 
