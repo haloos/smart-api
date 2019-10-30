@@ -84,9 +84,9 @@ app.get('/profile/:id', (req,res) => {
   .catch(err => res.status(400).json('error getting user'))
 })
 
-app.listen(3000, ()=> {
-  console.log('app is running on port 3000'); 
-})   
+app.put('image', (req, res) => {
+  const { id } = req.body;
+})
 
 /* 
 / --> res = this is workig 
