@@ -73,10 +73,12 @@ app.post('/register', (req,res) => {
             name: name, 
             joined: new Date()
           })
-  .then(user => {
-    res.json(user[0]);
-  })
-    })
+          .then(user => {
+            res.json(user[0]);
+          })
+      }) 
+      .then(trx.commit) 
+      .catch(trx.rollback)
   })
   return db('users') 
    .returning('*')
