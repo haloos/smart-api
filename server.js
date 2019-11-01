@@ -64,7 +64,8 @@ app.post('/register', (req,res) => {
       email: email
     }) 
     .into('login') 
-    .returning('email')
+    .returning('email') 
+    .then(email)
   })
   return db('users') 
    .returning('*')
