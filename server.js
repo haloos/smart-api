@@ -65,7 +65,18 @@ app.post('/register', (req,res) => {
     }) 
     .into('login') 
     .returning('email') 
-    .then(email)
+    .then(loginEmail => {
+      return trx('users') 
+        .returning('*')
+        .insert({ 
+            email: loginEmail, 
+            name: name, 
+            joined: new Date()
+          })
+  .then(user => {
+    res.json(user[0]);
+  })
+    })
   })
   return db('users') 
    .returning('*')
