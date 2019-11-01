@@ -62,7 +62,9 @@ app.post('/register', (req,res) => {
     trx.insert({
       hash:hash, 
       email: email
-    })
+    }) 
+    .into('login') 
+    
   })
   return db('users') 
    .returning('*')
