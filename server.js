@@ -21,26 +21,7 @@ app.use(bodyParser.json());
 
 app.use(cors()) 
 
-const database = {
-  users: [
-    {
-      id: '123', 
-      name: 'John', 
-      email: 'john@gmail.com', 
-      password: 'cookies', 
-      entries: 0, 
-      joined: new Date()
-    }, 
-    {
-      id: '124', 
-      name: 'Sally', 
-      email: 'sally@gmail.com', 
-      password: 'bananas', 
-      entries: 0, 
-      joined: new Date()
-    }
-  ]
-}
+
 
 app.get('/', (req, res)=> {
  res.send(database.users); 
@@ -56,7 +37,6 @@ app.post('/signin', (req, res) => {
        return db.select('*').from('users')  
         .where('email', '=', req.body.email) 
         .then(user => { 
-          console.log(user);
           res.json(user[0]) 
         })
         .catch(err => res.status(400).json('unable to get user'))
