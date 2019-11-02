@@ -57,9 +57,10 @@ app.post('/signin', (req, res) => {
         .then(user => {
           res.json(user[0]) 
         })
-        .catch()
+        .catch(err => res.status(400).json('unable to get user'))
      }
-    })
+    }) 
+        .catch(err => res.status(400).json('wrong credentials'))
 })  
 
 app.post('/register', (req,res) => { 
