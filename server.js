@@ -48,7 +48,7 @@ app.get('/', (req, res)=> {
 
 app.post('/signin', (req, res) => {
   db.select('email', 'hash').from('login') 
-    .where({'email', '=', req.body.email})
+    .where('email', '=', req.body.email)
     .then(data => {
       console.log(data);
     })
