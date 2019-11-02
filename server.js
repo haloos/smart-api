@@ -52,9 +52,10 @@ app.post('/signin', (req, res) => {
     .then(data => {
      const isValid = bcrypt.compareSync(req.body.password, data[0].hash); 
      if (isValid) { 
-       db.select('*').from('users')  
+       return db.select('*').from('users')  
         .where('email', '=', req.body.email) 
-        .then(user => {
+        .then(user => { 
+          console.log(user);
           res.json(user[0]) 
         })
         .catch(err => res.status(400).json('unable to get user'))
