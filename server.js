@@ -76,17 +76,7 @@ app.post('/register', (req,res) => {
 
 app.get('/profile/:id', )
 
-app.put('image', (req, res) => {
-  const { id } = req.body; 
-   db('users').where('id', '=', id)
-  .increment('entries', 1) 
-  .returning('entries') 
-  .then(entries => {
-    res.json(entries[0]);
-  })
-})  
-.catch(err => res.status(400).json('unable to get entries'))
-
+app.put('image', (req, res) => { image.handleImage(req, res, db)})
 /* 
 / --> res = this is workig 
 / signin --> Post = success/fail 
