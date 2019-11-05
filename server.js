@@ -2,7 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser'); 
 const bcrypt = require('bcrypt-nodejs'); 
 const cors = require('cors'); 
-const knex = require('knex')
+const knex = require('knex') 
+
+const register = register('./controllers./register');
   
   const db = knex({
   client: 'pg',
