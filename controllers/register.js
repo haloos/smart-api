@@ -1,5 +1,6 @@
 const handleRegister = (req,res) => { 
-  const { email, name, password } = req.body; 
+  const { email, name, password } = req.body;   
+  if (!email || !name || !password)
   const hash = bcrypt.hashSync(password); 
   db.transaction(trx => {
     trx.insert({
